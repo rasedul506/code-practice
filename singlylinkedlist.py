@@ -96,8 +96,35 @@ class SinglyLinkedList:
             slow = slow.next
             fast = fast.next
         return slow
+    
+    def reverseLinkedList(self, head):
+        cur = head
+        prev = None
         
-
+        while cur:
+            next = cur.next
+            cur.next = prev
+            prev = cur
+            cur = next
+            
+        return prev
+        
+    def removeAllElements(self, head: ListNode, val: int) -> ListNode:
+        cur = head
+        while cur:
+            if cur == head and cur.val == val:
+                head = cur.next
+                cur = None
+                cur = head
+                continue
+            if cur.val == val:
+                prev.next = cur.next
+                cur.next = None
+                cur = None
+                cur = prev
+            prev = cur
+            cur = cur.next
+        return head
         
 
 s = SinglyLinkedList()
