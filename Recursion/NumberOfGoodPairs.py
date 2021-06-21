@@ -21,15 +21,24 @@
 
 # Input: nums = [1,2,3]
 # Output: 0
-  
+
+# class Solution:
+#     def numIdenticalPairs(self, nums: List[int]) -> int:
+#         goodPairs = 0
+#         length = len(nums)
+#         for i in range(length-1):
+#             for j in range(i+1, length):
+#                 if nums[i] == nums[j]:
+#                     goodPairs += 1
+#         return goodPairs
   
 class Solution:
     def numIdenticalPairs(self, nums: List[int]) -> int:
         goodPairs = 0
-        length = len(nums)
-        for i in range(length-1):
-            for j in range(i+1, length):
-                if nums[i] == nums[j]:
-                    goodPairs += 1
+        dic = {}
+        for num in nums:
+            dic[num] = dic.get(num, 0) + 1
+        for key, value in dic.items():
+            goodPairs += (value*(value-1))//2
         return goodPairs
   
