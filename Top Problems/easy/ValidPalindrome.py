@@ -1,10 +1,7 @@
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        l = len(s)
-        if l < 2:
-            return True
         p = 0
-        q = l - 1
+        q = len(s) - 1
         
         while (p<q):
             while p<q and not s[p].isalnum():
