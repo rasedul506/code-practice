@@ -24,25 +24,41 @@ class Solution:
     #         elif val > target:
     #             end-=1
     
-        for i in range(len(nums)-2):
-            if i>0 and nums[i]==nums[i-1]: continue
+#         for i in range(len(nums)-2):
+#             if i>0 and nums[i]==nums[i-1]: continue
             
+#             start=i+1
+#             end=len(nums)-1
+            
+#             while start<end:
+#                 if nums[i]+nums[start]+nums[end]==0:
+#                     result.append([nums[i],nums[start],nums[end]])
+#                     start+=1
+#                     end-=1
+#                     while(end>start and nums[start]==nums[start-1]):
+#                         start+=1
+#                     while(end>start and nums[end]==nums[end+1]):
+#                         end-=1
+#                 elif nums[i]+nums[start]+nums[end] > 0:
+#                     end-=1
+#                 elif nums[i]+nums[start]+nums[end]<0:
+#                     start+=1
+#         return result                 
+        
+        for i,a in enumerate(nums):
+            if i>0 and a==nums[i-1]:
+                continue
             start=i+1
             end=len(nums)-1
-            
             while start<end:
-                if nums[i]+nums[start]+nums[end]==0:
-                    result.append([nums[i],nums[start],nums[end]])
+                target=a+nums[start]+nums[end]
+                if target<0:
                     start+=1
+                elif target>0:
                     end-=1
-                    while(end>start and nums[start]==nums[start-1]):
+                else:
+                    result.append([a,nums[start],nums[end]])
+                    start+=1
+                    while start<end and nums[start]==nums[start-1]:
                         start+=1
-                    while(end>start and nums[end]==nums[end+1]):
-                        end-=1
-                elif nums[i]+nums[start]+nums[end] > 0:
-                    end-=1
-                elif nums[i]+nums[start]+nums[end]<0:
-                    start+=1
-        return result                 
-        
-        
+        return result        
