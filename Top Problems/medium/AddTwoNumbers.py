@@ -29,3 +29,35 @@ class Solution:
             l3 = l3.next
         return head.next
         
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:        
+    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
+        
+        num1 = num2 = 0
+        base = 1 
+        while l1 or l2:
+            if l1:
+                num1 += l1.val*base
+                l1=l1.next
+            if l2:
+                num2 += l2.val*base
+                l2=l2.next
+            base*=10
+            
+        num3 = num1 +num2
+        
+        head = ListNode(0)
+        l3 = head
+        if num3 ==0: return head
+        
+        while num3>0:
+            r = num3%10
+            num3=num3//10
+            newnode = ListNode(r)
+            l3.next = newnode
+            l3 = l3.next
+        return head.next
